@@ -86,9 +86,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="OneSignal Title and Logo are properties of OneSignal Inc.\n\nThis is an unofficial app and just uses API of OneSignal.\n\nYour App ID and REST API keys are stored locally in your device only. When you uninstall app, these credentials also vanish."
+                android:text="@string/disclaimer"
                 android:textColor="@color/colorPrimary"
                 android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/sourceCodeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="View Source Code on GITHUB"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 

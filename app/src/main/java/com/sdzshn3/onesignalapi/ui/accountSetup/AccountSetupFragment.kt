@@ -1,6 +1,8 @@
 package com.sdzshn3.onesignalapi.ui.accountSetup
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -43,6 +45,18 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
         }
 
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        sourceCodeButton.setOnClickListener {
+            val sourceCodeUrl = "https://github.com/sdzshn3/OneSignalAPI"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(sourceCodeUrl)
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(context, "Browsers not found to open link", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
 
         submitButton.setOnClickListener {
             val restApiKey = restApiKeyEditText.text.toString().trim()
