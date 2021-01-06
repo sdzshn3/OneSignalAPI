@@ -1,0 +1,92 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:id="@+id/audienceSectionLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/includeAudienceLayout"
+                android:layout_width="25sp"
+                android:layout_height="25sp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/audienceTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/includeAudienceLayout"
+                android:text="Audience"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/audienceRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:checkedButton="@id/sendToSubUsersRadio">
+
+            <RadioButton
+                android:id="@+id/sendToSubUsersRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:text="Send to Subscribed Users"
+                android:textColor="@color/colorPrimary" />
+
+            <RadioButton
+                android:id="@+id/sendToSegmentsRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:text="Send to Particular Segment(s)"
+                android:textColor="@color/colorPrimary" />
+
+            <include
+                android:id="@+id/segmentsLayout"
+                layout="@layout/segments_layout"
+                tools:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/sendUsingFiltersRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:text="Send using Filters"
+                android:textColor="@color/colorPrimary" />
+
+            <include
+                android:id="@+id/filtersLayout"
+                layout="@layout/filters_layout" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

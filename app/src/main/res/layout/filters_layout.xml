@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/filtersLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/filtersHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TARGET AUDIENCE USING FILTERS"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filtersRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filtersHint"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            android:id="@+id/addFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filtersRecyclerView"
+            android:layout_marginTop="5dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="ADD FILTER"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

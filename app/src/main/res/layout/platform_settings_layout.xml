@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/platformSettingsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryLightest"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <include
+            android:id="@+id/platformSettingsAndroid"
+            layout="@layout/platform_settings_android" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryLightest"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <include
+            android:id="@+id/platformSettingsIos"
+            layout="@layout/platform_settings_ios" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <include
+            android:id="@+id/platformSettingsOthers"
+            layout="@layout/platform_settings_others" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+CreateNotification notification = new CreateNotification("5eb5a37e-b458-11e3-ac11-000c2940e62c");
+notification.setContent(new Content("English Message"));
+String[] segments = new String[2];
+segments[0] = "All";
+segments[1] = "Subscribed Users";
+notification.setIncludedSegments(new String[]{"All"});
+
+String json = new Gson().toJson(notification);
+try {
+   JSONObject jsonObject = new JSONObject(json);
+   Map<String, String> stringMap = new HashMap<>();
+   stringMap.put("foo","bar");
+   stringMap.put("key","value");
+   jsonObject.put("data", new JSONObject(stringMap));
+   Log.e("TEST", "" + jsonObject.toString());
+} catch (JSONException e) {
+   e.printStackTrace();
+}
+
+
+val jsonArray = JSONArray()
+
+                //val stringMap = HashMap<String?, String?>()
+                //val buttons: ArrayList<HashMap<String?, String?>> = ArrayList()
+                /*for (actionButton: ActionButton in actionButtons) {
+                    val jsonObject = JSONObject()
+                    jsonObject.put("id", actionButton.id)
+                    jsonObject.put("text", actionButton.text)
+                    jsonObject.put("icon", actionButton.icon)
+                    jsonArray.put(jsonObject)
+                }
+                Toast.makeText(this, jsonArray.toString(), Toast.LENGTH_LONG).show()*/
+
+                //Storage default rules
+                rules_version = '2';
+                service firebase.storage {
+                  match /b/{bucket}/o {
+                    match /{allPaths=**} {
+                      allow read, write: if request.auth != null;
+                    }
+                  }
+                }

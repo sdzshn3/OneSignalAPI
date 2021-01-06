@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newPushFragment">
+
+    <fragment
+        android:id="@+id/newPushFragment"
+        android:name="com.sdzshn3.onesignalapi.ui.newPush.view.NewPushFragment"
+        android:label="New Push"
+        tools:layout="@layout/fragment_new_push">
+
+        <action
+            android:id="@+id/action_newPushFragment_to_jsonPreviewFragment"
+            app:destination="@id/jsonPreviewFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_newPushFragment_to_notificationDetailFragment"
+            app:destination="@id/notificationDetailFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/jsonPreviewFragment"
+        android:name="com.sdzshn3.onesignalapi.ui.jsonPreview.JSONPreviewFragment"
+        android:label="JSON Preview"
+        tools:layout="@layout/fragment_json_preview">
+
+        <argument
+            android:name="message"
+            android:defaultValue="None" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationDetailFragment"
+        android:name="com.sdzshn3.onesignalapi.ui.notificationDetail.NotificationDetailFragment"
+        android:label="Notification Details"
+        tools:layout="@layout/fragment_notification_detail" >
+
+        <argument
+            android:name="notification"
+            app:argType="com.sdzshn3.onesignalapi.model.Notification"
+            app:nullable="true" />
+
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationHistoryFragment"
+        android:name="com.sdzshn3.onesignalapi.ui.notificationHistory.NotificationHistoryFragment"
+        android:label="Notification History"
+        tools:layout="@layout/fragment_notification_history" >
+
+        <action
+            android:id="@+id/action_notificationHistoryFragment_to_notificationDetailFragment"
+            app:destination="@id/notificationDetailFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+
+    </fragment>
+
+</navigation>

@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/fieldNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="Field 1" />
+
+    <EditText
+        android:id="@+id/keyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fieldNumberTextView"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edge_design_edit_text"
+        android:hint="Key"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/editTextColor"
+        android:textColorHint="@color/hintTextColor"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/valueEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/keyEditText"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edge_design_edit_text"
+        android:hint="Value"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/editTextColor"
+        android:textColorHint="@color/hintTextColor"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valueEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:minHeight="0dp"
+        android:padding="5dp"
+        android:text="Done"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valueEditText"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/doneButton"
+        android:minHeight="0dp"
+        android:padding="5dp"
+        android:text="Cancel"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

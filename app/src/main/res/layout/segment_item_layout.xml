@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/parentRelativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/segmentNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/deleteSegmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="❌"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_toEndOf="@id/segmentNumberTextView"
+        android:layout_marginStart="5dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/segmentNumberTextView"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/segmentHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Segment:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/segmentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/segmentHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

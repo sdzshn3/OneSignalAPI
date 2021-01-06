@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edge_design_edit_text"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/filterNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deleteFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/filterNumberTextView"
+            android:text="❌"
+            android:textColor="@android:color/holo_red_dark" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/operatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/operatorHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Operator:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterOperatorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/operatorHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/fieldHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Field:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterFieldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/fieldHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/keyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/keyHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Key:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterKeyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/keyHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/relationHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Relation:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterRelationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/relationHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hoursAgoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/hoursAgoHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Hours Ago:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterHoursAgoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/hoursAgoHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/valueLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/valueHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Value:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterValueTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/valueHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/radiusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/radiusHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Radius:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterRadiusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/radiusHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/latitudeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/latitudeHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Latitude:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterLatitudeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/latitudeHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/longitudeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/longitudeHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Longitude:"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/filterLongitudeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/longitudeHint"
+            android:background="@drawable/edge_design_edit_text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

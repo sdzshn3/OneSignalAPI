@@ -1,0 +1,371 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/filterNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        tools:text="Filter 1" />
+
+    <RelativeLayout
+        android:id="@+id/operatorRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/operatorHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Operator"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_below="@id/operatorHint"
+            android:layout_marginTop="5dp">
+
+            <Spinner
+                android:id="@+id/operatorSpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:entries="@array/filter_operators"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_arrow_down_solid" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fieldRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fieldHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIELD"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_below="@id/fieldHint"
+            android:layout_marginTop="5dp">
+
+            <Spinner
+                android:id="@+id/fieldSpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:entries="@array/filter_fields_list"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_arrow_down_solid" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/keyLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KEY"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterKeyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Key"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relationRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/relationHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RELATION"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_below="@id/relationHint"
+            android:layout_marginTop="5dp">
+
+            <Spinner
+                android:id="@+id/relationSpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                tools:entries="@array/last_session_relations" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_arrow_down_solid" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/hoursAgoLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours Ago"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterHoursAgoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Hours"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/valueLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VALUE"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterValueEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Value"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/radiusLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RADIUS"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterRadiusEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Radius"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/latitudeLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterLatitudeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Latitude"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/longitudeLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LONGITUDE"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/filterLongitudeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Longitude"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="Cancel"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="Done"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,261 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryLightest"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryLight">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sendToiOSSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/sendToiOSSwitch"
+            android:text="Send to Apple iOS"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/sendToiOSContentLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Badges"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/badgesRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:animateLayoutChanges="true"
+                android:checkedButton="@id/badgeDoNotSetRadio">
+
+                <RadioButton
+                    android:id="@+id/badgeDoNotSetRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Don't set"
+                    android:textColor="@color/colorPrimary" />
+
+                <RadioButton
+                    android:id="@+id/badgeSetToRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Set to"
+                    android:textColor="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/badgeSetToEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:gravity="top"
+                    android:hint="set to"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/badgeIncreaseByRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Increase by"
+                    android:textColor="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/badgesIncreaseByEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:gravity="top"
+                    android:hint="increase by (1 or -1)"
+                    android:inputType="numberSigned"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SOUND"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/iosSoundEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="device's default (filename.extension)"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Content Available"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/contentAvailableSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:checked="false"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/iosCategoryEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint=""
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Media"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/iosMediaRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" />
+
+            <Button
+                android:id="@+id/addIosMediaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="ADD MEDIA"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mutable Content"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/mutableContentSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:checked="false"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

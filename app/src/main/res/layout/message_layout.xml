@@ -1,0 +1,272 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:id="@+id/messageSectionLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/twoDigit"
+                android:layout_width="25sp"
+                android:layout_height="25sp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/twoDigit"
+                android:text="Message"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <!-- Add Message content ui here -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryLightest"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimaryLight">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/box"
+                        android:padding="4dp"
+                        android:text="ENGLISH"
+                        android:textColor="@android:color/white" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="TITLE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/notificationTitleEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:hint="Title (English)"
+                    android:inputType="textCapSentences"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MESSAGE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/notificationMessageEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:gravity="top"
+                    android:hint="Message (English)"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="5"
+                    android:nestedScrollingEnabled="true"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BIG PICTURE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/bigPictureUrlEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:gravity="top"
+                    android:hint="URL or resource name"
+                    android:inputType="textUri"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="LAUNCH URL"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/launchUrlEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/edge_design_edit_text"
+                    android:gravity="top"
+                    android:hint="https://example.com"
+                    android:inputType="textUri"
+                    android:padding="8dp"
+                    android:textColor="@color/editTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/notificationPreviewButton"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Receive Notification Preview"
+                app:spinning_bar_color="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notificationPreviewButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="(Long press above button to see JSON)"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/platformSettingsExtender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/arrow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/platformSettingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/arrow1"
+                android:text="Platform Settings"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/platformSettingsLayout"
+            layout="@layout/platform_settings_layout" />
+
+        <RelativeLayout
+            android:id="@+id/advancedSettingsExtender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/arrow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/arrow2"
+                android:text="Advanced Settings"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/advancedSettingsLayout"
+            layout="@layout/advanced_settings_layout" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

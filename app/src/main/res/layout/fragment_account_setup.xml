@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLightest"
+    tools:context=".ui.accountSetup.AccountSetupFragment">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_marginTop="90dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:layout_above="@id/submitButton">
+
+        <LinearLayout
+            android:id="@+id/setupLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ONESIGNAL APP ID"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/appIdEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="APP ID"
+                android:inputType="text"
+                android:maxLength="36"
+                android:padding="10dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="REST API KEY"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/restApiKeyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="API KEY"
+                android:inputType="text"
+                android:maxLength="48"
+                android:padding="10dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="OneSignal Title and Logo are properties of OneSignal Inc.\n\nThis is an unofficial app and just uses API of OneSignal.\n\nYour App ID and REST API keys are stored locally in your device only. When you uninstall app, these credentials also vanish."
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:minHeight="0dp"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="SUBMIT"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context=".ui.newPush.view.NewPushFragment">
+
+    <RelativeLayout
+        android:id="@+id/newPushBannerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Ad" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/newPushBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/newPushBannerAdUnitId" />
+
+    </RelativeLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newPushBannerLayout"
+        android:background="@color/backgroundColor"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/audienceLayout"
+                layout="@layout/audience_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+            <include
+                android:id="@+id/messageLayout"
+                layout="@layout/message_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/audienceLayout"
+                android:layout_margin="10dp" />
+
+            <include
+                android:id="@+id/scheduleLayout"
+                layout="@layout/schedule_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/messageLayout"
+                android:layout_margin="10dp" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sendFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_send"
+        app:tint="@android:color/white" />
+
+    <ProgressBar
+        android:id="@+id/fabProgressCircle"
+        style="?android:progressBarStyleLarge"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16.5dp"
+        android:layout_marginBottom="16.5dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimaryDark" />
+
+</RelativeLayout>

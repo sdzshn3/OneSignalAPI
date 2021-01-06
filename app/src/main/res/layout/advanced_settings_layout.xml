@@ -1,0 +1,200 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/advancedSettingsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryLightest"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/additionalDataHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADDITIONAL DATA"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/additionalDataRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/additionalDataHint"
+                android:layout_marginTop="5dp"
+                android:nestedScrollingEnabled="false" />
+
+            <Button
+                android:id="@+id/addAnotherFieldButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/additionalDataRecyclerView"
+                android:layout_marginTop="5dp"
+                android:minHeight="0dp"
+                android:padding="5dp"
+                android:text="ADD DATA"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COLLAPSE KEY/ID"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/collapseKeyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="example_key"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Priority"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/priorityRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/priorityNormalRadio"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/priorityHighRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High"
+                    android:textColor="@color/colorPrimary" />
+
+                <RadioButton
+                    android:id="@+id/priorityNormalRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Normal"
+                    android:textColor="@color/colorPrimary" />
+
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TIME TO LIVE"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/timeToLiveEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="Default"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Duration: Default (3 days)"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/actionsButtonHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTION BUTTONS"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/actionButtonsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/actionsButtonHint"
+                android:layout_marginTop="5dp"
+                android:nestedScrollingEnabled="false" />
+
+            <Button
+                android:id="@+id/addAnotherActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/actionButtonsRecyclerView"
+                android:layout_marginTop="5dp"
+                android:minHeight="0dp"
+                android:padding="5dp"
+                android:text="ADD BUTTON"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

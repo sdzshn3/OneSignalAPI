@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">OneSignal API</string>
+    <string name="attachment_ios_hint">Example: {"id1": "https://domain.com/image.jpg"}</string>
+    <string-array name="category_list">
+        <item>None</item>
+        <item>(Created In App)</item>
+    </string-array>
+    <string-array name="lock_screen_visibility_list">
+        <item>PUBLIC</item>
+        <item>PRIVATE</item>
+        <item>SECRET</item>
+    </string-array>
+    <string-array name="filter_fields_list_for_api">
+        <item>@null</item>
+        <item>tag</item>
+        <item>last_session</item>
+        <item>first_session</item>
+        <item>session_count</item>
+        <item>session_time</item>
+        <item>amount_spent</item>
+        <item>bought_sku</item>
+        <item>language</item>
+        <item>app_version</item>
+        <item>location</item>
+        <item>email</item>
+        <item>country</item>
+    </string-array>
+    <string-array name="filter_fields_list">
+        <item>Select</item>
+        <item>Tag</item>
+        <item>Last Session</item>
+        <item>First Session</item>
+        <item>Session Count</item>
+        <item>Session Time</item>
+        <item>Amount Spent</item>
+        <item>Bought SKU</item>
+        <item>Language</item>
+        <item>App Version</item>
+        <item>Location</item>
+        <item>Email</item>
+        <item>Country</item>
+    </string-array>
+    <string-array name="tag_relations">
+        <item>=</item>
+        <item>&gt;</item>
+        <item>&lt;</item>
+        <item>!=</item>
+        <item>exists</item>
+        <item>not_exists</item>
+        <item>time_elapsed_gt</item>
+        <item>time_elapsed_lt</item>
+    </string-array>
+    <string-array name="last_session_relations">
+        <item>&gt;</item>
+        <item>&lt;</item>
+    </string-array>
+    <string-array name="first_session_relations">
+        <item>&gt;</item>
+        <item>&lt;</item>
+    </string-array>
+    <string-array name="session_count_relations">
+        <item>=</item>
+        <item>&gt;</item>
+        <item>&lt;</item>
+        <item>!=</item>
+    </string-array>
+    <string-array name="session_time_relations">
+        <item>&gt;</item>
+        <item>&lt;</item>
+    </string-array>
+    <string-array name="amount_spent_relations">
+        <item>=</item>
+        <item>&gt;</item>
+        <item>&lt;</item>
+    </string-array>
+    <string-array name="bought_sku_relations">
+        <item>=</item>
+        <item>&gt;</item>
+        <item>&lt;</item>
+    </string-array>
+    <string-array name="language_relations">
+        <item>=</item>
+        <item>!=</item>
+    </string-array>
+    <string-array name="app_version_relations">
+        <item>=</item>
+        <item>&gt;</item>
+        <item>&lt;</item>
+        <item>!=</item>
+    </string-array>
+    <string-array name="country_relations">
+        <item>=</item>
+    </string-array>
+    <string-array name="filter_operators">
+        <item>AND</item>
+        <item>OR</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_header_desc">Navigation header</string>
+</resources>

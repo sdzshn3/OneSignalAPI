@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/segmentsLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/includeSegmentsHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND TO USERS IN SEGMENTS"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/includedSegmentsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/includeSegmentsHint"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            android:id="@+id/addAnotherSegmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/includedSegmentsRecyclerView"
+            android:layout_marginTop="5dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="ADD SEGMENT"
+            android:textColor="@android:color/white" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/addAnotherSegmentButton"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/excludeSegmentHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginTop="10dp"
+            android:text="EXCLUDE USERS IN SEGMENTS"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/excludedSegmentsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/excludeSegmentHint"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            android:id="@+id/addAnotherExcludeSegmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/excludedSegmentsRecyclerView"
+            android:layout_marginTop="5dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="EXCLUDE SEGMENT"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>
