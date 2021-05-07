@@ -4,10 +4,9 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.sdzshn3.onesignalapi.oneSignalPOJO.Content
 import com.sdzshn3.onesignalapi.oneSignalPOJO.Heading
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-
 data class Notification (
     @SerializedName("contents")
     val contents: Content,

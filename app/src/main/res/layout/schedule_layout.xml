@@ -1,5 +1,4 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,14 +6,15 @@
     app:cardElevation="4dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cardBackgroundColor"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/headingBackgroundColor">
 
             <TextView
                 android:id="@+id/includeScheduleLayout"
@@ -25,7 +25,7 @@
                 android:background="@drawable/circle"
                 android:gravity="center"
                 android:text="3"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingNumberColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,179 +35,153 @@
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@id/includeScheduleLayout"
                 android:text="Schedule"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingTextColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/backgroundColor"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery"
+                android:textColor="@color/titleTextColor"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/deliveryRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryLightest"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginTop="5dp"
+                android:checkedButton="@id/deliveryBeginImmediatelyRadio"
+                android:orientation="vertical">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delivery"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/deliveryRadioGroup"
+                <RadioButton
+                    android:id="@+id/deliveryBeginImmediatelyRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:checkedButton="@id/deliveryBeginImmediatelyRadio"
+                    android:minHeight="30dp"
+                    android:text="Begin sending immediately"
+                    android:textColor="@color/otherTextColor" />
+
+                <RadioButton
+                    android:id="@+id/deliveryBeginAtParticularTimeRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Begin sending at a particular time"
+                    android:textColor="@color/otherTextColor" />
+
+                <LinearLayout
+                    android:id="@+id/deliveryBeginAtParticularTimeLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="33dp"
                     android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/deliveryBeginImmediatelyRadio"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/selectedDateAndTimeTextView"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="30dp"
-                        android:text="Begin sending immediately"
-                        android:textColor="@color/colorPrimary" />
+                        android:layout_marginTop="5dp"
+                        android:text="Delivers at selected date and time"
+                        android:textColor="@color/otherTextColor" />
 
-                    <RadioButton
-                        android:id="@+id/deliveryBeginAtParticularTimeRadio"
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/chooseDateAndTimeButton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="30dp"
-                        android:text="Begin sending at a particular time"
-                        android:textColor="@color/colorPrimary" />
+                        android:layout_marginTop="10dp"
+                        android:minHeight="0dp"
+                        android:padding="5dp"
+                        android:text="CHOOSE DATE &amp; TIME"
+                        android:textColor="@android:color/white" />
 
-                    <LinearLayout
-                        android:id="@+id/deliveryBeginAtParticularTimeLinearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="33dp"
-                        android:orientation="vertical">
+                </LinearLayout>
+            </RadioGroup>
 
-                        <TextView
-                            android:id="@+id/selectedDateAndTimeTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Delivers at selected date and time"
-                            android:textColor="@color/colorPrimary" />
 
-                        <Button
-                            android:id="@+id/chooseDateAndTimeButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:minHeight="0dp"
-                            android:padding="5dp"
-                            android:text="CHOOSE DATE &amp; TIME"
-                            android:textColor="@android:color/white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Per User Optimization"
+                android:textColor="@color/titleTextColor"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
 
-                    </LinearLayout>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp">
-
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/perUserOptimisationRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryLightest"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginTop="5dp"
+                android:checkedButton="@id/optimizationSendImmediatelyRadio"
+                android:orientation="vertical">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PER USER OPTIMIZATION"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/perUserOptimisationRadioGroup"
+                <RadioButton
+                    android:id="@+id/optimizationSendImmediatelyRadio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:checkedButton="@id/optimizationSendImmediatelyRadio"
+                    android:minHeight="30dp"
+                    android:text="Send immediately"
+                    android:textColor="@color/otherTextColor" />
+
+                <RadioButton
+                    android:id="@+id/optimizationIntelligentRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Intelligent delivery (Recommended)"
+                    android:textColor="@color/otherTextColor" />
+
+                <RadioButton
+                    android:id="@+id/optimizationTimeZoneRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="30dp"
+                    android:text="Optimize by user time zone"
+                    android:textColor="@color/otherTextColor" />
+
+                <LinearLayout
+                    android:id="@+id/optimizeByUserTimeZoneLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="33dp"
                     android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/optimizationSendImmediatelyRadio"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/deliversAtInTheirTimeZoneTextView"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="30dp"
-                        android:text="Send immediately"
-                        android:textColor="@color/colorPrimary" />
+                        android:layout_marginTop="5dp"
+                        android:text="Delivers at selected in their local timezone"
+                        android:textColor="@color/otherTextColor" />
 
-                    <RadioButton
-                        android:id="@+id/optimizationIntelligentRadio"
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/chooseTimeButton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="30dp"
-                        android:text="Intelligent delivery (Recommended)"
-                        android:textColor="@color/colorPrimary" />
+                        android:layout_marginTop="10dp"
+                        android:minHeight="0dp"
+                        android:padding="5dp"
+                        android:text="CHOOSE TIME"
+                        android:textColor="@android:color/white" />
 
-                    <RadioButton
-                        android:id="@+id/optimizationTimeZoneRadio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="30dp"
-                        android:text="Optimize by user time zone"
-                        android:textColor="@color/colorPrimary" />
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/optimizeByUserTimeZoneLinearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="33dp"
-                        android:orientation="vertical">
+            </RadioGroup>
 
-                        <TextView
-                            android:id="@+id/deliversAtInTheirTimeZoneTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Delivers at selected in their local timezone"
-                            android:textColor="@color/colorPrimary" />
-
-                        <Button
-                            android:id="@+id/chooseTimeButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:minHeight="0dp"
-                            android:padding="5dp"
-                            android:text="CHOOSE TIME"
-                            android:textColor="@android:color/white" />
-
-                    </LinearLayout>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 

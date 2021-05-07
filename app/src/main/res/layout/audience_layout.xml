@@ -12,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
+        android:background="@color/cardBackgroundColor"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/headingBackgroundColor">
 
             <TextView
                 android:id="@+id/includeAudienceLayout"
@@ -28,7 +29,7 @@
                 android:background="@drawable/circle"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingNumberColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -39,11 +40,16 @@
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@id/includeAudienceLayout"
                 android:text="Audience"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingTextColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/backgroundColor"/>
 
         <RadioGroup
             android:id="@+id/audienceRadioGroup"
@@ -58,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="30dp"
                 android:text="Send to Subscribed Users"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/otherTextColor" />
 
             <RadioButton
                 android:id="@+id/sendToSegmentsRadio"
@@ -66,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="30dp"
                 android:text="Send to Particular Segment(s)"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/otherTextColor" />
 
             <include
                 android:id="@+id/segmentsLayout"
@@ -79,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="30dp"
                 android:text="Send using Filters"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/otherTextColor" />
 
             <include
                 android:id="@+id/filtersLayout"

@@ -3,14 +3,11 @@ package com.sdzshn3.onesignalapi.ui.newPush.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sdzshn3.onesignalapi.R
+import com.sdzshn3.onesignalapi.databinding.ActionButtonItemLayoutBinding
 import com.sdzshn3.onesignalapi.model.ActionButton
 import com.sdzshn3.onesignalapi.interfaces.DeleteButtonListener
-import kotlinx.android.synthetic.main.action_button_item_layout.view.*
 
 @SuppressLint("SetTextI18n")
 class ActionButtonsAdapter(
@@ -20,18 +17,12 @@ class ActionButtonsAdapter(
 
     private var deleteButtonListener: DeleteButtonListener? = null
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val buttonNumberTextView: TextView = view.buttonNumberTextView
-        val deleteButtonButton: TextView = view.deleteButtonButton
-        val buttonActionIdTextView: TextView = view.buttonActionIdTextView
-        val buttonTextTextView: TextView = view.buttonTextTextView
-        val buttonIconTextView: TextView = view.buttonIconTextView
-    }
+    class ViewHolder(val binding: ActionButtonItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.action_button_item_layout,
+            ActionButtonItemLayoutBinding.inflate(
+                LayoutInflater.from(context),
                 parent,
                 false
             )
@@ -48,13 +39,15 @@ class ActionButtonsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.buttonNumberTextView.text = "BUTTON ${position+1}"
-        holder.buttonActionIdTextView.text = actionButtons[position].id
-        holder.buttonTextTextView.text = actionButtons[position].text
-        holder.buttonIconTextView.text = actionButtons[position].icon
+        holder.binding.apply {
+            buttonNumberTextView.text = "BUTTON ${position+1}"
+            buttonActionIdTextView.text = actionButtons[position].id
+            buttonTextTextView.text = actionButtons[position].text
+            buttonIconTextView.text = actionButtons[position].icon
 
-        holder.deleteButtonButton.setOnClickListener {
-            deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            deleteButtonButton.setOnClickListener {
+                deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            }
         }
     }
 

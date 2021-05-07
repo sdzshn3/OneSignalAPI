@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryLightest"
+    android:background="@color/backgroundColor"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryLight">
+        android:background="@color/secondaryHeadingBackgroundColor">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/sendToAndroidSwitch"
@@ -24,7 +24,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/sendToAndroidSwitch"
             android:text="Send to Google Android"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/platformTitleTextColor"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -46,9 +46,8 @@
                 android:id="@+id/categoryHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CHANNEL CATEGORY"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Channel Category"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -92,9 +91,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOCAL CHANNEL ID"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Local Channel ID"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -123,9 +121,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SOUND"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Sound"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -154,9 +151,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LED COLOR"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="LED Color"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -186,9 +182,8 @@
                 android:id="@+id/lockScreenVisibilityHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOCKSCREEN VISIBILITY"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Lockscreen Visibility"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -231,9 +226,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SMALL ICON"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Small Icon"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -262,9 +256,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ACCENT COLOR"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Accent Color"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -293,9 +286,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LARGE ICON"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Large Icon"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -325,9 +317,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BIG PICTURE"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Big Picture"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -355,9 +346,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GROUP KEY"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Group Key"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -385,9 +375,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GROUP MESSAGE"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Group Message"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText

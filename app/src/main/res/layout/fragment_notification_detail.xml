@@ -1,45 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.notificationDetail.NotificationDetailFragment">
 
-    <RelativeLayout
-        android:id="@+id/notificationDetailBannerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="51dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Ad" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:background="@android:color/darker_gray" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/notificationDetailBanner"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/notificationDetailBannerAdUnitId" />
-
-    </RelativeLayout>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/notificationDetailBannerLayout">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"

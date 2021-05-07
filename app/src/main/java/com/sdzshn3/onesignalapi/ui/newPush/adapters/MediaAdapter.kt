@@ -3,14 +3,11 @@ package com.sdzshn3.onesignalapi.ui.newPush.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sdzshn3.onesignalapi.R
-import com.sdzshn3.onesignalapi.model.Media
+import com.sdzshn3.onesignalapi.databinding.IosMediaItemLayoutBinding
 import com.sdzshn3.onesignalapi.interfaces.DeleteButtonListener
-import kotlinx.android.synthetic.main.ios_media_item_layout.view.*
+import com.sdzshn3.onesignalapi.model.Media
 
 @SuppressLint("SetTextI18n")
 class MediaAdapter(
@@ -20,17 +17,12 @@ class MediaAdapter(
 
     private var deleteButtonListener: DeleteButtonListener? = null
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val mediaNumberTextView: TextView = view.mediaNumberTextView
-        val deleteFieldButton: TextView = view.deleteMediaButton
-        val keyEditText: TextView = view.keyTextView
-        val valueEditText: TextView = view.valueTextView
-    }
+    class ViewHolder(val binding: IosMediaItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.ios_media_item_layout,
+            IosMediaItemLayoutBinding.inflate(
+                LayoutInflater.from(context),
                 parent,
                 false
             )
@@ -47,12 +39,14 @@ class MediaAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mediaNumberTextView.text = "MEDIA " + medias[position].number.toString()
-        holder.keyEditText.text = medias[position].key
-        holder.valueEditText.text = medias[position].value
+        holder.binding.apply {
+            mediaNumberTextView.text = "MEDIA " + medias[position].number.toString()
+            keyTextView.text = medias[position].key
+            valueTextView.text = medias[position].value
 
-        holder.deleteFieldButton.setOnClickListener {
-            deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            deleteMediaButton.setOnClickListener {
+                deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            }
         }
     }
 

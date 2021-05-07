@@ -1,7 +1,6 @@
 package com.sdzshn3.onesignalapi.ui.notificationHistory
 
 import android.app.Application
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,11 +9,14 @@ import com.sdzshn3.onesignalapi.EncryptedPrefManager
 import com.sdzshn3.onesignalapi.model.NotificationsResponse
 import com.sdzshn3.onesignalapi.repository.MainRepository
 import com.sdzshn3.onesignalapi.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import javax.inject.Inject
 
+@HiltViewModel
 class NotificationHistoryViewModel
-@ViewModelInject
+@Inject
 constructor(
     private val repository: MainRepository,
     context: Application

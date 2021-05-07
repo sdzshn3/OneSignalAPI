@@ -1,6 +1,5 @@
 package com.sdzshn3.onesignalapi.ui.notificationDetail
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.sdzshn3.onesignalapi.model.Notification
 import com.sdzshn3.onesignalapi.repository.MainRepository
 import com.sdzshn3.onesignalapi.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import javax.inject.Inject
 
-class NotificationDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class NotificationDetailViewModel @Inject constructor(
     private val repository: MainRepository
 ) : ViewModel() {
 

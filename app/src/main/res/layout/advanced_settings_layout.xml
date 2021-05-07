@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryLightest"
+        android:background="@color/backgroundColor"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -22,9 +22,8 @@
                 android:id="@+id/additionalDataHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADDITIONAL DATA"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Additional Data"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -57,9 +56,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="COLLAPSE KEY/ID"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Collapse ID"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -89,8 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Priority"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <RadioGroup
@@ -105,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="High"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/otherTextColor" />
 
                 <RadioButton
                     android:id="@+id/priorityNormalRadio"
@@ -113,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="Normal"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/otherTextColor" />
 
 
             </RadioGroup>
@@ -129,9 +126,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TIME TO LIVE"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Time To Live"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -142,7 +138,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/edge_design_edit_text"
                 android:gravity="top"
-                android:hint="Default"
+                android:hint="in seconds"
                 android:inputType="number"
                 android:padding="8dp"
                 android:textColor="@color/editTextColor"
@@ -154,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Duration: Default (3 days)"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/otherTextColor"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -169,9 +165,8 @@
                 android:id="@+id/actionsButtonHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ACTION BUTTONS"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Action Buttons"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView

@@ -2,9 +2,7 @@ package com.sdzshn3.onesignalapi.ui.notificationDetail
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,35 +15,28 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
-import com.google.android.gms.ads.AdRequest
 import com.sdzshn3.onesignalapi.EncryptedPrefManager
-import com.sdzshn3.onesignalapi.model.Notification
+import com.sdzshn3.onesignalapi.R
 import com.sdzshn3.onesignalapi.databinding.FragmentNotificationDetailBinding
+import com.sdzshn3.onesignalapi.model.Notification
 import com.sdzshn3.onesignalapi.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 
 @AndroidEntryPoint
-class NotificationDetailFragment : Fragment() {
+class NotificationDetailFragment : Fragment(R.layout.fragment_notification_detail) {
 
     private val args: NotificationDetailFragmentArgs by navArgs()
-    private var _binding: FragmentNotificationDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentNotificationDetailBinding
     private lateinit var notification: Notification
     private val viewModel: NotificationDetailViewModel by viewModels()
     private lateinit var prefManager: EncryptedPrefManager
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentNotificationDetailBinding.inflate(inflater, container, false)
-        return _binding!!.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.notificationDetailBanner.loadAd(AdRequest.Builder().build())
+
+        binding = FragmentNotificationDetailBinding.bind(view)
+
         prefManager = EncryptedPrefManager(requireContext())
         if (args.notification != null) {
             notification = args.notification!!
@@ -73,7 +64,7 @@ class NotificationDetailFragment : Fragment() {
             )
         }
         viewModel.notification.observe(viewLifecycleOwner) {
-            when(it.status) {
+            when (it.status) {
                 Status.LOADING -> {
                     binding.swipeRefreshLayout.isRefreshing = true
                 }
@@ -255,15 +246,5 @@ class NotificationDetailFragment : Fragment() {
         binding.pieChart.data = data
         binding.pieChart.highlightValues(null)
         binding.pieChart.invalidate()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        _binding?.notificationDetailBanner?.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        _binding?.notificationDetailBanner?.resume()
     }
 }

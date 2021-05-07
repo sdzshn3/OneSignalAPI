@@ -2,13 +2,10 @@ package com.sdzshn3.onesignalapi.ui.newPush.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sdzshn3.onesignalapi.R
+import com.sdzshn3.onesignalapi.databinding.SegmentItemLayoutBinding
 import com.sdzshn3.onesignalapi.interfaces.DeleteButtonListener
-import kotlinx.android.synthetic.main.segment_item_layout.view.*
 
 class SegmentsAdapter(
     private val context: Context,
@@ -17,16 +14,12 @@ class SegmentsAdapter(
 
     private var deleteButtonListener: DeleteButtonListener? = null
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val segmentNumberTextView: TextView = view.segmentNumberTextView
-        val deleteSegmentButton: TextView = view.deleteSegmentButton
-        val segmentTextView: TextView = view.segmentTextView
-    }
+    class ViewHolder(val binding: SegmentItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.segment_item_layout,
+            SegmentItemLayoutBinding.inflate(
+                LayoutInflater.from(context),
                 parent,
                 false
             )
@@ -43,11 +36,13 @@ class SegmentsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.segmentNumberTextView.text = "SEGMENT " + (position + 1)
-        holder.segmentTextView.text = segments[position]
+        holder.binding.apply {
+            segmentNumberTextView.text = "SEGMENT " + (position + 1)
+            segmentTextView.text = segments[position]
 
-        holder.deleteSegmentButton.setOnClickListener {
-            deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            deleteSegmentButton.setOnClickListener {
+                deleteButtonListener?.onDeleteButtonPressed(holder.layoutPosition)
+            }
         }
     }
 

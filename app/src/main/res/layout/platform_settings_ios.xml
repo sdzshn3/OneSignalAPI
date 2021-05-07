@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryLightest"
+    android:background="@color/backgroundColor"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryLight">
+        android:background="@color/secondaryHeadingBackgroundColor">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/sendToiOSSwitch"
@@ -25,7 +25,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/sendToiOSSwitch"
             android:text="Send to Apple iOS"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/platformTitleTextColor"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -48,8 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Badges"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <RadioGroup
@@ -66,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="30dp"
                     android:text="Don't set"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/otherTextColor" />
 
                 <RadioButton
                     android:id="@+id/badgeSetToRadio"
@@ -74,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="30dp"
                     android:text="Set to"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/otherTextColor" />
 
                 <EditText
                     android:id="@+id/badgeSetToEditText"
@@ -97,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="30dp"
                     android:text="Increase by"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/otherTextColor" />
 
                 <EditText
                     android:id="@+id/badgesIncreaseByEditText"
@@ -127,9 +126,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SOUND"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:text="Sound"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -158,8 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Content Available"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -182,8 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -213,8 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Media"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -242,8 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mutable Content"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/titleTextColor"
                 android:textStyle="bold" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial

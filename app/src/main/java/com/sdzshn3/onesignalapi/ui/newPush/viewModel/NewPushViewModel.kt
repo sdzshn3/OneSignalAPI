@@ -2,7 +2,6 @@ package com.sdzshn3.onesignalapi.ui.newPush.viewModel
 
 import android.app.Application
 import android.os.Bundle
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.sdzshn3.onesignalapi.Event
@@ -13,6 +12,7 @@ import com.sdzshn3.onesignalapi.repository.MainRepository
 import com.sdzshn3.onesignalapi.oneSignalPOJO.Filter
 import com.sdzshn3.onesignalapi.utils.NetworkHelper
 import com.sdzshn3.onesignalapi.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -21,8 +21,10 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.Exception
 import java.util.ArrayList
+import javax.inject.Inject
 
-class NewPushViewModel @ViewModelInject constructor(
+@HiltViewModel
+class NewPushViewModel @Inject constructor(
     applicationContext: Application,
     private val mainRepository: MainRepository,
     private val networkHelper: NetworkHelper

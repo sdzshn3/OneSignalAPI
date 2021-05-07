@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import com.sdzshn3.onesignalapi.EncryptedPrefManager
 import com.sdzshn3.onesignalapi.PrefManager
 import com.sdzshn3.onesignalapi.R
+import com.sdzshn3.onesignalapi.databinding.FragmentAccountSetupBinding
 import com.sdzshn3.onesignalapi.ui.MainActivity
-import kotlinx.android.synthetic.main.fragment_account_setup.*
 import java.util.*
 
 @Suppress("NAME_SHADOWING")
@@ -22,6 +22,7 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
     private lateinit var encryptedPrefManager: EncryptedPrefManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val binding = FragmentAccountSetupBinding.bind(view)
         prefManager = PrefManager(requireContext())
         encryptedPrefManager = EncryptedPrefManager(requireContext())
 
@@ -46,7 +47,7 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
 
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
-        sourceCodeButton.setOnClickListener {
+        binding.sourceCodeButton.setOnClickListener {
             val sourceCodeUrl = "https://github.com/sdzshn3/OneSignalAPI"
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(sourceCodeUrl)
@@ -58,9 +59,9 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
             }
         }
 
-        submitButton.setOnClickListener {
-            val restApiKey = restApiKeyEditText.text.toString().trim()
-            val appId = appIdEditText.text.toString().trim()
+        binding.submitButton.setOnClickListener {
+            val restApiKey = binding.restApiKeyEditText.text.toString().trim()
+            val appId = binding.appIdEditText.text.toString().trim()
 
             if (restApiKey.isBlank() && appId.isBlank()) {
                 Toast.makeText(

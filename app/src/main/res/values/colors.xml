@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8196ab</color>
-    <color name="colorPrimaryLight">#e0e7ed</color>
-    <color name="colorPrimaryLightest">#f1f5f8</color>
+    <color name="colorPrimary">#E6051A2B</color>
     <color name="colorPrimaryDark">#051a2b</color>
-    <color name="colorAccent">#e54b4d</color>
-    <color name="numberBackground">#a4b1c2</color>
+    <color name="colorAccent">#208feb</color>
+
+    <color name="editTextColor">#333333</color>
+    <color name="headingBackgroundColor">#fafcfb</color>
+    <color name="headingTextColor">#808a93</color>
+    <color name="hintTextColor">#bdc4cc</color>
+    <color name="titleTextColor">#646d74</color>
     <color name="backgroundColor">#f8f9fb</color>
-    <color name="hintTextColor">#9aa2ab</color>
-    <color name="editTextColor">#778699</color>
+    <color name="editTextStrokeColor">#dde1e4</color>
+    <color name="secondaryHeadingBackgroundColor">#ecedef</color>
+    <color name="editTextBackgroundColor">#ffffff</color>
+    <color name="otherTextColor">#E6051A2B</color>
+    <color name="cardBackgroundColor">#ffffff</color>
+    <color name="circleColor">#808a93</color>
+    <color name="headingNumberColor">#ffffff</color>
+    <color name="platformTitleTextColor">#E6051A2B</color>
 </resources>

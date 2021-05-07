@@ -4,35 +4,25 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.google.android.gms.ads.AdRequest
 import com.sdzshn3.onesignalapi.R
 import com.sdzshn3.onesignalapi.databinding.FragmentJsonPreviewBinding
 
-class JSONPreviewFragment : Fragment() {
+class JSONPreviewFragment : Fragment(R.layout.fragment_json_preview) {
 
-    private var _binding: FragmentJsonPreviewBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentJsonPreviewBinding
     private val args: JSONPreviewFragmentArgs by navArgs()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentJsonPreviewBinding.inflate(inflater)
-        return _binding!!.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding = FragmentJsonPreviewBinding.bind(view)
         setHasOptionsMenu(true)
-
-        binding.jsonPreviewBanner.loadAd(AdRequest.Builder().build())
 
         val string = args.message
         binding.jsonTV.text = string
@@ -56,15 +46,5 @@ class JSONPreviewFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        _binding?.jsonPreviewBanner?.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        _binding?.jsonPreviewBanner?.resume()
     }
 }

@@ -3,8 +3,6 @@
 package com.sdzshn3.onesignalapi
 
 import android.app.Application
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.onesignal.OneSignal
@@ -26,13 +24,6 @@ class Application : Application() {
             .setApiKey(getString(R.string.google_api_key)) // Required for Auth.
             .build()
         FirebaseApp.initializeApp(this, options, "OneSignal API")
-
-        MobileAds.initialize(this)
-        if (BuildConfig.DEBUG) {
-            val requestConfiguration = RequestConfiguration.Builder()
-                .setTestDeviceIds(listOf("8EBE051F9CB1D9D6912A76B6FE19655C")).build()
-            MobileAds.setRequestConfiguration(requestConfiguration)
-        }
 
         // OneSignal Initialization
         OneSignal.initWithContext(this)

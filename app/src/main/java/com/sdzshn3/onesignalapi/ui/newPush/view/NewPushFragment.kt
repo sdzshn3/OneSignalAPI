@@ -17,7 +17,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
@@ -25,6 +24,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -32,11 +32,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.sdzshn3.onesignalapi.*
-import com.sdzshn3.onesignalapi.R
-import com.sdzshn3.onesignalapi.model.Field
-import com.sdzshn3.onesignalapi.model.Media
 import com.sdzshn3.onesignalapi.databinding.*
 import com.sdzshn3.onesignalapi.interfaces.DeleteButtonListener
+import com.sdzshn3.onesignalapi.model.Field
+import com.sdzshn3.onesignalapi.model.Media
 import com.sdzshn3.onesignalapi.model.OneSignalIds
 import com.sdzshn3.onesignalapi.oneSignalPOJO.CreateNotification
 import com.sdzshn3.onesignalapi.oneSignalPOJO.Filter
@@ -75,7 +74,7 @@ const val NOTIFICATION_RESULT_DIALOG_SUCCESS = "NOTIFICATION_RESULT_DIALOG_SUCCE
 @Suppress("LABEL_NAME_CLASH", "BlockingMethodInNonBlockingContext")
 @SuppressLint("SetTextI18n")
 @AndroidEntryPoint
-class NewPushFragment : Fragment(), View.OnClickListener {
+class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListener {
 
     private lateinit var additionalDataAdapter: AdditionalDataAdapter
     private lateinit var actionButtonsAdapter: ActionButtonsAdapter
@@ -94,56 +93,35 @@ class NewPushFragment : Fragment(), View.OnClickListener {
     @Inject
     lateinit var networkHelper: NetworkHelper
 
-    private var _binding: FragmentNewPushBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentNewPushBinding
 
     private lateinit var reviewManager: ReviewManager
     private var reviewInfo: ReviewInfo? = null
 
-    private lateinit var interstitialAd: InterstitialAd
-    private var shouldNavigateToDetailsAfterInterstitial = false
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentNewPushBinding.inflate(inflater, container, false)
-        return _binding!!.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         if (savedInstanceState != null) {
             val notificationResultDialog =
                 parentFragmentManager.findFragmentByTag(NOTIFICATION_RESULT_DIALOG_SUCCESS) as NotificationResultDialog?
             notificationResultDialog?.let {
                 it.setMoreDetailsListener {
-                    if (interstitialAd.isLoaded) {
-                        shouldNavigateToDetailsAfterInterstitial = true
-                        interstitialAd.show()
-                    } else {
-                        val id = viewModel.idToNavigate.split("ID: ")[1]
-                        val direction =
-                            NewPushFragmentDirections.actionNewPushFragmentToNotificationDetailFragment(
-                                null,
-                                id
-                            )
-                        findNavController().navigate(direction)
-                    }
+                    val id = viewModel.idToNavigate.split("ID: ")[1]
+                    val direction =
+                        NewPushFragmentDirections.actionNewPushFragmentToNotificationDetailFragment(
+                            null,
+                            id
+                        )
+                    findNavController().navigate(direction)
                 }
                 it.setOnDialogClosedListener {
-                    if (interstitialAd.isLoaded) {
-                        shouldNavigateToDetailsAfterInterstitial = false
-                        interstitialAd.show()
-                    } else {
-                        reviewInfo?.let { info ->
-                            reviewManager.launchReviewFlow(requireActivity(), info)
-                                .addOnSuccessListener {
-                                    log("review Ask success")
-                                }.addOnFailureListener { exception ->
-                                    log("review ask failed: ${exception.message}")
-                                }
-                        }
+                    reviewInfo?.let { info ->
+                        reviewManager.launchReviewFlow(requireActivity(), info)
+                            .addOnSuccessListener {
+                                log("review Ask success")
+                            }.addOnFailureListener { exception ->
+                                log("review ask failed: ${exception.message}")
+                            }
                     }
                 }
             }
@@ -154,6 +132,7 @@ class NewPushFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        binding = FragmentNewPushBinding.bind(view)
 
         val firebaseAuth = FirebaseAuth.getInstance()
         if (Application.appId.isNullOrBlank()) {
@@ -180,44 +159,6 @@ class NewPushFragment : Fragment(), View.OnClickListener {
                     }
             }
         }
-
-        binding.newPushBanner.loadAd(
-            AdRequest.Builder().build()
-        )
-        interstitialAd = InterstitialAd(requireActivity())
-        interstitialAd.adUnitId = getString(R.string.newPushFragInterstitialAdUnitId)
-        interstitialAd.adListener = object : AdListener() {
-
-            override fun onAdLoaded() {
-                super.onAdLoaded()
-                log("Ad loaded")
-            }
-
-            override fun onAdClosed() {
-                super.onAdClosed()
-
-                if (shouldNavigateToDetailsAfterInterstitial) {
-                    val id = viewModel.idToNavigate
-                    val direction =
-                        NewPushFragmentDirections.actionNewPushFragmentToNotificationDetailFragment(
-                            null,
-                            id
-                        )
-                    findNavController().navigate(direction)
-                } else {
-                    reviewInfo?.let { info ->
-                        reviewManager.launchReviewFlow(requireActivity(), info)
-                            .addOnSuccessListener {
-                                log("review Ask success")
-                            }.addOnFailureListener { exception ->
-                                log("review ask failed: ${exception.message}")
-                            }
-                    }
-                }
-                interstitialAd.loadAd(AdRequest.Builder().build())
-            }
-        }
-        interstitialAd.loadAd(AdRequest.Builder().build())
 
         binding.messageLayout.root.setOnClickListener(this)
 
@@ -321,7 +262,6 @@ class NewPushFragment : Fragment(), View.OnClickListener {
                 viewModel.deleteFilter(position)
             }
         })
-
 
         binding.audienceLayout.filtersLayout.addFilterButton.setOnClickListener(this)
         binding.audienceLayout.segmentsLayout.addAnotherExcludeSegmentButton.setOnClickListener(this)
@@ -653,34 +593,22 @@ class NewPushFragment : Fragment(), View.OnClickListener {
                                 true
                             ).apply {
                                 setMoreDetailsListener {
-                                    nlog("MOOOOORE")
-                                    if (interstitialAd.isLoaded) {
-                                        shouldNavigateToDetailsAfterInterstitial = true
-                                        interstitialAd.show()
-                                    } else {
-                                        val id = resource.data.split("ID: ")[1]
-                                        val direction =
-                                            NewPushFragmentDirections.actionNewPushFragmentToNotificationDetailFragment(
-                                                null,
-                                                id
-                                            )
-                                        findNavController().navigate(direction)
-                                    }
+                                    val id = resource.data.split("ID: ")[1]
+                                    val direction =
+                                        NewPushFragmentDirections.actionNewPushFragmentToNotificationDetailFragment(
+                                            null,
+                                            id
+                                        )
+                                    findNavController().navigate(direction)
                                 }
                                 setOnDialogClosedListener {
-                                    log("closed")
-                                    if (interstitialAd.isLoaded) {
-                                        shouldNavigateToDetailsAfterInterstitial = false
-                                        interstitialAd.show()
-                                    } else {
-                                        reviewInfo?.let { info ->
-                                            reviewManager.launchReviewFlow(requireActivity(), info)
-                                                .addOnSuccessListener {
-                                                    log("review Ask success")
-                                                }.addOnFailureListener { exception ->
-                                                    log("review ask failed: ${exception.message}")
-                                                }
-                                        }
+                                    reviewInfo?.let { info ->
+                                        reviewManager.launchReviewFlow(requireActivity(), info)
+                                            .addOnSuccessListener {
+                                                log("review Ask success")
+                                            }.addOnFailureListener { exception ->
+                                                log("review ask failed: ${exception.message}")
+                                            }
                                     }
                                 }
                             }.show(parentFragmentManager, NOTIFICATION_RESULT_DIALOG_SUCCESS)
@@ -697,9 +625,10 @@ class NewPushFragment : Fragment(), View.OnClickListener {
         inflater.inflate(R.menu.main_activity_menu, menu)
     }
 
+    @Suppress("DEPRECATION")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.change_app_menu_item) {
-            AlertDialog.Builder(requireContext())
+            val dialog = MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Confirm !")
                 .setMessage("This will clear current app's ID and REST API Key. Are you sure you want to continue?")
                 .setPositiveButton("YES") { _: DialogInterface, _: Int ->
@@ -711,7 +640,28 @@ class NewPushFragment : Fragment(), View.OnClickListener {
                 }
                 .setNegativeButton("No") { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
-                }.create().show()
+                }.create()
+            dialog.show()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(
+                    resources.getColor(
+                        R.color.otherTextColor,
+                        requireActivity().theme
+                    )
+                )
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(
+                    resources.getColor(
+                        R.color.otherTextColor,
+                        requireActivity().theme
+                    )
+                )
+            } else {
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                    .setTextColor(resources.getColor(R.color.otherTextColor))
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                    .setTextColor(resources.getColor(R.color.otherTextColor))
+            }
+
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -1380,16 +1330,5 @@ class NewPushFragment : Fragment(), View.OnClickListener {
                 }
             }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        _binding?.newPushBanner?.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        includedSegmentsAdapter.notifyDataSetChanged()
-        _binding?.newPushBanner?.resume()
     }
 }

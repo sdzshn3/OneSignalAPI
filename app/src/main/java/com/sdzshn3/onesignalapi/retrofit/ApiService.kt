@@ -2,10 +2,8 @@ package com.sdzshn3.onesignalapi.retrofit
 
 import com.sdzshn3.onesignalapi.model.Notification
 import com.sdzshn3.onesignalapi.model.NotificationsResponse
-import com.sdzshn3.onesignalapi.model.OneSignalIds
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 

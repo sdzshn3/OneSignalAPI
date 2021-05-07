@@ -31,10 +31,6 @@
         tools:replace="android:allowBackup"
         tools:targetApi="n">
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_app_id" />
-
         <activity android:name=".ui.AccountSetupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

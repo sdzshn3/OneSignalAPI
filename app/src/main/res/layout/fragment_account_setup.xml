@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLightest"
+    android:background="@color/backgroundColor"
     tools:context=".ui.accountSetup.AccountSetupFragment">
 
     <TextView
@@ -37,7 +37,7 @@
                 android:text="ONESIGNAL APP ID"
                 android:textSize="16sp"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/otherTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -63,7 +63,7 @@
                 android:text="REST API KEY"
                 android:textAllCaps="true"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/otherTextColor"
                 android:textStyle="bold" />
 
             <EditText
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/disclaimer"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/otherTextColor"
                 android:textAlignment="center" />
 
             <Button
@@ -97,6 +97,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="View Source Code on GITHUB"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:backgroundTint="@color/backgroundColor"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>

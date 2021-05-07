@@ -97,8 +97,6 @@
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="disclaimer">This is an unofficial app which just uses API of OneSignal.\n\n
-        Your App ID and REST API keys are stored locally in your device only. When you uninstall app, these credentials also vanish.\n\n
-        Your Privacy is my first priority. If you are concerned about privacy or info being stolen, I made the app\'s source code visible to public. You may check the source code by clicking button below.\n\n
+    <string name="disclaimer">This is an Open Source &amp; Unofficial app which just uses REST API of OneSignal made for Developers and App owners.\n\n
         OneSignal Title and Logo are properties of OneSignal Inc.</string>
 </resources>

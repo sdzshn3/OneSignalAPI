@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="SEND TO USERS IN SEGMENTS"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/otherTextColor"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -43,7 +43,7 @@
             android:layout_height="1dp"
             android:layout_below="@id/addAnotherSegmentButton"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/otherTextColor" />
 
         <TextView
             android:id="@+id/excludeSegmentHint"
@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:text="EXCLUDE USERS IN SEGMENTS"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/otherTextColor"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

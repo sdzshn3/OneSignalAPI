@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="TARGET AUDIENCE USING FILTERS"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/otherTextColor"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

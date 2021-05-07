@@ -7,16 +7,17 @@
 
     <LinearLayout
         android:id="@+id/messageSectionLinearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
+        android:background="@color/cardBackgroundColor"
         android:orientation="vertical"
         android:paddingBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/headingBackgroundColor">
 
             <TextView
                 android:id="@+id/twoDigit"
@@ -27,7 +28,7 @@
                 android:background="@drawable/circle"
                 android:gravity="center"
                 android:text="2"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingNumberColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -37,153 +38,120 @@
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@id/twoDigit"
                 android:text="Message"
-                android:textColor="@android:color/white"
+                android:textColor="@color/headingTextColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/backgroundColor"/>
+
         <!-- Add Message content ui here -->
 
-        <androidx.cardview.widget.CardView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Title"
+            android:textColor="@color/titleTextColor"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/notificationTitleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:hint="Title (English)"
+            android:inputType="textCapSentences"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="@dimen/editTextSize" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryLightest"
-                android:orientation="vertical"
-                android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Message *"
+            android:textColor="@color/titleTextColor"
+            android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/colorPrimaryLight">
+        <EditText
+            android:id="@+id/notificationMessageEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:gravity="top"
+            android:hint="Message (English)"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="5"
+            android:nestedScrollingEnabled="true"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="@dimen/editTextSize" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/box"
-                        android:padding="4dp"
-                        android:text="ENGLISH"
-                        android:textColor="@android:color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Big Picture"
+            android:textColor="@color/titleTextColor"
+            android:textStyle="bold" />
 
-                </RelativeLayout>
+        <EditText
+            android:id="@+id/bigPictureUrlEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:gravity="top"
+            android:hint="URL or resource name"
+            android:inputType="textUri"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="@dimen/editTextSize" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="TITLE"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Launch URL"
+            android:textColor="@color/titleTextColor"
+            android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/notificationTitleEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/edge_design_edit_text"
-                    android:hint="Title (English)"
-                    android:inputType="textCapSentences"
-                    android:padding="8dp"
-                    android:textColor="@color/editTextColor"
-                    android:textColorHint="@color/hintTextColor"
-                    android:textSize="14sp" />
+        <EditText
+            android:id="@+id/launchUrlEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edge_design_edit_text"
+            android:gravity="top"
+            android:hint="https://example.com"
+            android:inputType="textUri"
+            android:padding="8dp"
+            android:textColor="@color/editTextColor"
+            android:textColorHint="@color/hintTextColor"
+            android:textSize="@dimen/editTextSize" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="MESSAGE"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/notificationMessageEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/edge_design_edit_text"
-                    android:gravity="top"
-                    android:hint="Message (English)"
-                    android:inputType="textMultiLine|textCapSentences"
-                    android:minLines="5"
-                    android:nestedScrollingEnabled="true"
-                    android:padding="8dp"
-                    android:textColor="@color/editTextColor"
-                    android:textColorHint="@color/hintTextColor"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="BIG PICTURE"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/bigPictureUrlEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/edge_design_edit_text"
-                    android:gravity="top"
-                    android:hint="URL or resource name"
-                    android:inputType="textUri"
-                    android:padding="8dp"
-                    android:textColor="@color/editTextColor"
-                    android:textColorHint="@color/hintTextColor"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="LAUNCH URL"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/launchUrlEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/edge_design_edit_text"
-                    android:gravity="top"
-                    android:hint="https://example.com"
-                    android:inputType="textUri"
-                    android:padding="8dp"
-                    android:textColor="@color/editTextColor"
-                    android:textColorHint="@color/hintTextColor"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -192,12 +160,12 @@
 
             <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/notificationPreviewButton"
-                style="@style/Widget.MaterialComponents.Button"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Receive Notification Preview"
-                app:spinning_bar_color="@color/colorPrimary" />
+                app:spinning_bar_color="@color/colorAccent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -231,7 +199,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/arrow1"
                 android:text="Platform Settings"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorAccent" />
 
         </RelativeLayout>
 
@@ -259,7 +227,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/arrow2"
                 android:text="Advanced Settings"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorAccent" />
 
         </RelativeLayout>
 
