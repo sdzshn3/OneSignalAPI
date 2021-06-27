@@ -9,6 +9,9 @@
             android:icon="@drawable/ic_send"
             android:title="New Push" />
         <item
+            android:id="@+id/myAppsFragment"
+            android:title="My Apps" />
+        <item
             android:id="@+id/notificationHistoryFragment"
             android:icon="@drawable/ic_history"
             android:title="Notification History" />
