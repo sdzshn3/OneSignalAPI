@@ -588,9 +588,9 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                             binding.sendFAB.isEnabled = true
                             binding.fabProgressCircle.visibility = GONE
                             NotificationResultDialog.newInstance(
-                                resource.data,
-                                "Successful",
-                                true
+                                message = resource.data,
+                                title = "Successful",
+                                success = true
                             ).apply {
                                 setMoreDetailsListener {
                                     val id = resource.data.split("ID: ")[1]

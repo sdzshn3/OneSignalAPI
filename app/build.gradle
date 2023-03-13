@@ -18,14 +18,14 @@ repositories {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.sdzshn3.onesignalapi"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 20
-        versionName "1.2.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 33
+        versionCode 21
+        versionName "1.2.1"
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,7 +39,7 @@ android {
         }
 
         debug {
-            ext.enableCrashlytics = false
+            //ext.enableCrashlytics = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -51,19 +51,20 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.sdzshn3.onesignalapi'
 }
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    def lifecycle_version = "2.3.1"
+    def lifecycle_version = "2.6.0"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.10'
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -72,13 +73,13 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // RecyclerView
-    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
 
     // Material Design
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.8.0'
 
     // OneSignal
-    implementation 'com.onesignal:OneSignal:4.3.3'
+    implementation 'com.onesignal:OneSignal:4.8.4'
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -86,28 +87,28 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     //Coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 
     //Dagger
-    implementation 'com.google.dagger:hilt-android:2.35'
-    kapt 'com.google.dagger:hilt-android-compiler:2.35'
+    implementation 'com.google.dagger:hilt-android:2.38.1'
+    kapt 'com.google.dagger:hilt-android-compiler:2.37'
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
-    implementation 'androidx.activity:activity-ktx:1.2.3'
+    implementation 'androidx.activity:activity-ktx:1.6.1'
 
     // Navigation Components
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 
-    implementation 'com.google.android.play:core:1.10.0'
+    implementation 'com.google.android.play:core:1.10.3'
     implementation 'com.google.android.play:core-ktx:1.8.1'
 
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -116,5 +117,5 @@ dependencies {
     // Firebase Messaging
     implementation 'com.google.firebase:firebase-messaging-ktx'
 
-    implementation 'androidx.security:security-crypto:1.1.0-alpha03'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha05'
 }

@@ -12,6 +12,5 @@ fun log(msg: String?) {
     }
 }
 
-fun nlog(ignoreLog: Any?) {
-
-}
+@Suppress("UNUSED_PARAMETER")
+fun nlog(ignoreLog: Any?) = Unit

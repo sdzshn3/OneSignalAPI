@@ -44,7 +44,7 @@ class NotificationHistoryAdapter : RecyclerView.Adapter<NotificationHistoryAdapt
             }
             root.setOnClickListener {
                 onItemCLickListener?.let {
-                    it(notifications[holder.adapterPosition])
+                    it(notifications[holder.bindingAdapterPosition])
                 }
             }
         }
