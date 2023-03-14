@@ -1,36 +1,33 @@
 plugins {
-    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-    id "androidx.navigation.safeargs.kotlin"
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
 }
 
-repositories {
+/*repositories {
     jcenter()
-    maven {
-        url 'https://jitpack.io'
-    }
-}
+    maven { url 'https://www.jitpack.io' }
+}*/
 
 android {
-    compileSdkVersion 33
+    namespace 'com.sdzshn3.onesignalapi'
+    buildToolsVersion '33.0.0'
+    compileSdk 33
+
     defaultConfig {
         applicationId "com.sdzshn3.onesignalapi"
-        minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 21
+        minSdk 21
+        targetSdk 33
+        versionCode 22
         versionName "1.2.1"
-        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -39,9 +36,14 @@ android {
         }
 
         debug {
-            //ext.enableCrashlytics = true
+            ext.enableCrashlytics = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     // work-runtime-ktx 2.1.0 and above now requires Java 8
@@ -51,7 +53,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'com.sdzshn3.onesignalapi'
+
 }
 
 dependencies {
@@ -68,7 +70,7 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:4.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
     // Card View
     implementation 'androidx.cardview:cardview:1.0.0'
 
@@ -79,7 +81,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
 
     // OneSignal
-    implementation 'com.onesignal:OneSignal:4.8.4'
+    implementation 'com.onesignal:OneSignal:4.8.5'
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -91,10 +93,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 
     //Dagger
-    implementation 'com.google.dagger:hilt-android:2.38.1'
-    kapt 'com.google.dagger:hilt-android-compiler:2.37'
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+    implementation 'com.google.dagger:hilt-android:2.45'
+    kapt 'com.google.dagger:hilt-android-compiler:2.45'
+    //implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    //kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     implementation 'androidx.activity:activity-ktx:1.6.1'
 
@@ -118,4 +120,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
 
     implementation 'androidx.security:security-crypto:1.1.0-alpha05'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

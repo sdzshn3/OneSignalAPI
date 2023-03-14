@@ -1,2 +1,20 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Keep this for br.com.simplepass:loading-button-android
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
 include ':app'
 rootProject.name='OneSignal API'
