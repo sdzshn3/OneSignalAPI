@@ -7,22 +7,28 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.sdzshn3.onesignalapi.EncryptedPrefManager
 import com.sdzshn3.onesignalapi.PrefManager
 import com.sdzshn3.onesignalapi.R
 import com.sdzshn3.onesignalapi.databinding.FragmentAccountSetupBinding
 import com.sdzshn3.onesignalapi.ui.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @Suppress("NAME_SHADOWING")
+@AndroidEntryPoint
 class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
 
     private lateinit var prefManager: PrefManager
     private lateinit var encryptedPrefManager: EncryptedPrefManager
+    private val viewModel: AccountSetupViewModel by viewModels()
+    private lateinit var binding: FragmentAccountSetupBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val binding = FragmentAccountSetupBinding.bind(view)
+        binding = FragmentAccountSetupBinding.bind(view)
         prefManager = PrefManager(requireContext())
         encryptedPrefManager = EncryptedPrefManager(requireContext())
 
@@ -32,17 +38,22 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
         val encryptedRestApiKey = encryptedPrefManager.restApiKey
         val encryptedAppId = encryptedPrefManager.oneSignalAppId
 
-        if (encryptedRestApiKey.isNullOrBlank() || encryptedAppId.isNullOrBlank()) {
-            if (restApiKey != null  && restApiKey.isNotBlank() && appId != null && appId.isNotBlank()) {
-                encryptedPrefManager.oneSignalAppId = appId
-                encryptedPrefManager.restApiKey = restApiKey
-                prefManager.removeAllPrefs()
-                startActivity(Intent(requireActivity(), MainActivity::class.java))
-                requireActivity().finish()
-            }
-        } else {
+        if (restApiKey != null && restApiKey.isNotBlank() &&
+            appId != null && appId.isNotBlank()
+        ) {
+            viewModel.addApp("App1", appId, restApiKey)
+            prefManager.removeAllPrefs()
             startActivity(Intent(requireActivity(), MainActivity::class.java))
             requireActivity().finish()
+        } else if (encryptedRestApiKey != null && encryptedRestApiKey.isNotBlank() &&
+            encryptedAppId != null && encryptedAppId.isNotBlank()
+        ) {
+            viewModel.addApp("App1", encryptedAppId, encryptedRestApiKey)
+            encryptedPrefManager.deleteAll()
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            requireActivity().finish()
+        } else {
+            observeViewModel()
         }
 
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
@@ -62,14 +73,21 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
         binding.submitButton.setOnClickListener {
             val restApiKey = binding.restApiKeyEditText.text.toString().trim()
             val appId = binding.appIdEditText.text.toString().trim()
+            val appName = binding.appNameEditText.text.toString().trim()
 
-            if (restApiKey.isBlank() && appId.isBlank()) {
+            if (restApiKey.isBlank() && appId.isBlank() && appName.isBlank()) {
                 Toast.makeText(
                     requireActivity(),
-                    "Please fill both App ID and REST API Key",
+                    "Please fill all fields",
                     Toast.LENGTH_LONG
                 ).show()
                 return@setOnClickListener
+            } else if (appName.isBlank()) {
+                Toast.makeText(
+                    requireActivity(),
+                    "Please fill App Name",
+                    Toast.LENGTH_LONG
+                ).show()
             } else if (appId.isBlank()) {
                 Toast.makeText(
                     requireActivity(),
@@ -100,11 +118,18 @@ class AccountSetupFragment : Fragment(R.layout.fragment_account_setup) {
                 return@setOnClickListener
             }
 
-            encryptedPrefManager.oneSignalAppId = appId
-            encryptedPrefManager.restApiKey = restApiKey
+            viewModel.addApp(appName, appId, restApiKey)
+        }
+    }
 
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            requireActivity().finish()
+    private fun observeViewModel() = viewModel.apply {
+        appsList.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                startActivity(Intent(requireActivity(), MainActivity::class.java))
+                requireActivity().finish()
+            } else {
+                binding.splash.isVisible = false
+            }
         }
     }
 

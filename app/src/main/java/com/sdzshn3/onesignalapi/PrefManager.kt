@@ -12,14 +12,8 @@ class PrefManager constructor(private val context: Context) {
 
     private val prefName = "oneSignalIds"
 
-    private val preferences: SharedPreferences
-    private val editor: SharedPreferences.Editor
-
-    init {
-
-        preferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-        editor = preferences.edit()
-    }
+    private val preferences: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+    private val editor: SharedPreferences.Editor = preferences.edit()
 
     fun removeAllPrefs() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {

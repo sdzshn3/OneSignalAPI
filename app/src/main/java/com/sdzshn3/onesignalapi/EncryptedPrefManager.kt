@@ -7,18 +7,19 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
 @SuppressLint("CommitPrefEdits")
-class EncryptedPrefManager constructor(context: Context) {
+class EncryptedPrefManager constructor(val context: Context) {
     private val _oneSignalAppId: String = "oneSignalAppId"
     private val _restApiKey: String = "restApiKey"
 
     private val preferences: SharedPreferences
     private val editor: SharedPreferences.Editor
+    private val prefName = "oneSignalIds_v2"
 
     init {
         val masterKey = MasterKey.Builder(context)
             .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
             .build()
-        val prefName = "oneSignalIds_v2"
+
         preferences = EncryptedSharedPreferences.create(
             context,
             prefName,
@@ -27,6 +28,14 @@ class EncryptedPrefManager constructor(context: Context) {
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
         editor = preferences.edit()
+    }
+
+    fun deleteAll() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            context.deleteSharedPreferences(prefName)
+        } else {
+            editor.clear().commit()
+        }
     }
 
     var oneSignalAppId: String?

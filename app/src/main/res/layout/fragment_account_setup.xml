@@ -1,43 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     tools:context=".ui.accountSetup.AccountSetupFragment">
 
+
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:layout_marginTop="90dp"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
+        android:layout_marginTop="90dp"
+        android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleTextView"
-        android:layout_above="@id/submitButton">
+        android:layout_above="@id/submitButton"
+        android:layout_below="@id/titleTextView">
 
         <LinearLayout
             android:id="@+id/setupLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ONESIGNAL APP ID"
-                android:textSize="16sp"
-                android:textAllCaps="true"
+                android:text="App Name"
                 android:textColor="@color/otherTextColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/appNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edge_design_edit_text"
+                android:gravity="top"
+                android:hint="Name"
+                android:inputType="textCapWords"
+                android:maxLength="36"
+                android:padding="10dp"
+                android:selectAllOnFocus="true"
+                android:text="App1"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="OneSignal App ID"
+                android:textColor="@color/otherTextColor"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -48,7 +77,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/edge_design_edit_text"
                 android:gravity="top"
-                android:hint="APP ID"
+                android:hint="App ID"
                 android:inputType="text"
                 android:maxLength="36"
                 android:padding="10dp"
@@ -60,10 +89,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="REST API KEY"
-                android:textAllCaps="true"
-                android:textSize="16sp"
+                android:text="REST API Key"
                 android:textColor="@color/otherTextColor"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -74,7 +102,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/edge_design_edit_text"
                 android:gravity="top"
-                android:hint="API KEY"
+                android:hint="API Key"
                 android:inputType="text"
                 android:maxLength="48"
                 android:padding="10dp"
@@ -82,23 +110,44 @@
                 android:textColorHint="@color/hintTextColor"
                 android:textSize="16sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_twotone_info"
+                    app:tint="@color/otherTextColor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:text="You can add more apps later"
+                    android:textColor="@color/otherTextColor" />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/disclaimer"
-                android:textColor="@color/otherTextColor"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/otherTextColor" />
 
             <Button
                 android:id="@+id/sourceCodeButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="View Source Code on GITHUB"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/backgroundColor"
-                android:layout_marginTop="10dp"/>
+                android:text="View Source Code on GITHUB" />
 
         </LinearLayout>
 
@@ -108,13 +157,28 @@
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:stateListAnimator="@null"
         android:minHeight="0dp"
         android:padding="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:text="SUBMIT"
         android:textColor="@android:color/white" />
+
+    <RelativeLayout
+        android:id="@+id/splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

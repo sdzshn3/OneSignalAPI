@@ -1,6 +1,11 @@
 package com.sdzshn3.onesignalapi.di
 
+import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import com.sdzshn3.onesignalapi.retrofit.ApiService
+import com.sdzshn3.onesignalapi.room.AppDatabase
+import com.sdzshn3.onesignalapi.room.OneSignalAppsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -65,4 +70,21 @@ object ApplicationModule {
     @Singleton
     fun provideFreeImageHostApiService(@FreeImageHost retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRoomDataBase(context: Application): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "appsListDatabase"
+        ).fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOneSignalAppsDao(appDatabase: AppDatabase): OneSignalAppsDao {
+        return appDatabase.oneSignalAppsDao()
+    }
 }
