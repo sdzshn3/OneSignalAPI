@@ -8,6 +8,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
@@ -17,14 +18,16 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.ads.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -64,8 +67,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.random.Random
 
 const val NOTIFICATION_RESULT_DIALOG_ERROR = "NOTIFICATION_RESULT_DIALOG_ERROR"
@@ -97,6 +98,26 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
 
     private lateinit var reviewManager: ReviewManager
     private var reviewInfo: ReviewInfo? = null
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                processNotification()
+            } else {
+                // Explain to the user that the feature is unavailable because the
+                // feature requires a permission that the user has denied. At the
+                // same time, respect the user's decision. Don't link to system
+                // settings in an effort to convince the user to change their
+                // decision.
+                Snackbar.make(
+                    binding.root,
+                    "Notification permission is needed to show the preview of notification",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -499,43 +520,43 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
     }
 
     private fun observerViewModel() {
-        viewModel.optimizedTimeZoneTime.observe(viewLifecycleOwner, {
+        viewModel.optimizedTimeZoneTime.observe(viewLifecycleOwner) {
             optimizedTimeZoneTime = it
             binding.scheduleLayout.deliversAtInTheirTimeZoneTextView.text =
                 "Delivers at $optimizedTimeZoneTime in their local timezone"
-        })
+        }
 
-        viewModel.deliveryAfterFinal.observe(viewLifecycleOwner, {
+        viewModel.deliveryAfterFinal.observe(viewLifecycleOwner) {
             deliverAfterFinal = it
-        })
+        }
 
-        viewModel.deliveryAfterUi.observe(viewLifecycleOwner, {
+        viewModel.deliveryAfterUi.observe(viewLifecycleOwner) {
             binding.scheduleLayout.selectedDateAndTimeTextView.text = "Delivers at $it"
-        })
+        }
 
-        viewModel.fieldsLiveData.observe(requireActivity(), {
+        viewModel.fieldsLiveData.observe(requireActivity()) {
             additionalDataAdapter.submitList(it)
-        })
+        }
 
-        viewModel.mediasLiveData.observe(requireActivity(), {
+        viewModel.mediasLiveData.observe(requireActivity()) {
             mediaAdapter.submitList(it)
-        })
+        }
 
-        viewModel.actionButtonsLiveData.observe(requireActivity(), {
+        viewModel.actionButtonsLiveData.observe(requireActivity()) {
             actionButtonsAdapter.submitList(it)
-        })
+        }
 
-        viewModel.includedSegmentsLiveData.observe(requireActivity(), {
+        viewModel.includedSegmentsLiveData.observe(requireActivity()) {
             includedSegmentsAdapter.submitList(it)
-        })
+        }
 
-        viewModel.excludedSegmentsLiveData.observe(requireActivity(), {
+        viewModel.excludedSegmentsLiveData.observe(requireActivity()) {
             excludedSegmentsAdapter.submitList(it)
-        })
+        }
 
-        viewModel.filtersLiveData.observe(requireActivity(), {
+        viewModel.filtersLiveData.observe(requireActivity()) {
             filtersAdapter.submitList(it)
-        })
+        }
 
         viewModel.result.observe(viewLifecycleOwner) {
             it.peekContent().let { resource ->
@@ -588,9 +609,9 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                             binding.sendFAB.isEnabled = true
                             binding.fabProgressCircle.visibility = GONE
                             NotificationResultDialog.newInstance(
-                                resource.data,
-                                "Successful",
-                                true
+                                message = resource.data,
+                                title = "Successful",
+                                success = true
                             ).apply {
                                 setMoreDetailsListener {
                                     val id = resource.data.split("ID: ")[1]
@@ -759,20 +780,46 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
 
             binding.messageLayout.notificationPreviewButton -> {
 
-                val notification = buildNotification(
-                    binding,
-                    requireActivity(),
-                    viewModel,
-                    deliverAfterFinal,
-                    optimizedTimeZoneTime
-                ) ?: return
-                notification.appId = Application.appId
-                notification.includedSegments = null
-                notification.excludedSegments = null
-                notification.includePlayerIds = null
-                notification.filters = null
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    when {
+                        ContextCompat.checkSelfPermission(
+                            requireContext(),
+                            android.Manifest.permission.POST_NOTIFICATIONS
+                        ) == PackageManager.PERMISSION_GRANTED -> {
+                            // You can use the API that requires the permission.
+                            processNotification()
+                        }
+                        shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS) -> {
+                            // In an educational UI, explain to the user why your app requires this
+                            // permission for a specific feature to behave as expected, and what
+                            // features are disabled if it's declined. In this UI, include a
+                            // "cancel" or "no thanks" button that lets the user continue
+                            // using your app without granting the permission.
+                            Snackbar.make(
+                                binding.root,
+                                "Notification permission is needed to show the preview of notification",
+                                Snackbar.LENGTH_LONG
+                            ).setAction("grant") {
+                                requestPermissionLauncher.launch(
+                                    android.Manifest.permission.POST_NOTIFICATIONS
+                                )
+                            }.show()
 
-                previewNotification(notification)
+                        }
+                        else -> {
+                            // You can directly ask for the permission.
+                            // The registered ActivityResultCallback gets the result of this request.
+
+                            requestPermissionLauncher.launch(
+                                android.Manifest.permission.POST_NOTIFICATIONS
+                            )
+
+                        }
+                    }
+                } else {
+                    processNotification()
+                }
+
             }
 
             binding.scheduleLayout.chooseDateAndTimeButton -> {
@@ -1172,6 +1219,48 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
         }
     }
 
+    private fun processNotification() {
+        val notificationManager =
+            activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (notificationManager.areNotificationsEnabled().not()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Notifications are disabled. Please enable them in settings",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (notificationManager.areNotificationsPaused()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Notifications are paused. Please enable them in settings",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
+        }
+
+        val notification = buildNotification(
+            binding,
+            requireActivity(),
+            viewModel,
+            deliverAfterFinal,
+            optimizedTimeZoneTime
+        ) ?: return
+        notification.appId = Application.appId
+        notification.includedSegments = null
+        notification.excludedSegments = null
+        notification.includePlayerIds = null
+        notification.filters = null
+
+        previewNotification(notification)
+    }
+
     private val channelId = "preview_notifications"
     private val channelName = "Preview Notifications"
 
@@ -1212,7 +1301,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                 }
                 payload.buttons?.let {
                     it.forEach { button ->
-                        addAction(button.icon?.toInt() ?: 0, button.text!!, null)
+                        addAction(button.icon?.toIntOrNull() ?: 0, button.text!!, null)
                     }
                 }
             }
@@ -1230,7 +1319,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                                 URL(it.trim()).openConnection().getInputStream()
                             )
                             largeIconBitmap = resizeBitmapForLargeIconArea(requireContext(), bitmap)
-                        } catch (e: Exception) {
+                        } catch (_: Exception) {
                         }
                     }
 
@@ -1239,7 +1328,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                             bigPictureBitmap = BitmapFactory.decodeStream(
                                 URL(it.trim()).openConnection().getInputStream()
                             )
-                        } catch (e: Exception) {
+                        } catch (_: Exception) {
                         }
                     }
 
@@ -1281,7 +1370,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                 }
                 payload.buttons?.let {
                     it.forEach { button ->
-                        addAction(button.icon?.toInt() ?: 0, button.text!!, null)
+                        addAction(button.icon?.toIntOrNull() ?: 0, button.text!!, null)
                     }
                 }
             }
@@ -1301,7 +1390,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                                 URL(it.trim()).openConnection().getInputStream()
                             )
                             largeIconBitmap = resizeBitmapForLargeIconArea(requireContext(), bitmap)
-                        } catch (e: Exception) {
+                        } catch (_: Exception) {
                         }
                     }
 
@@ -1310,7 +1399,7 @@ class NewPushFragment : Fragment(R.layout.fragment_new_push), View.OnClickListen
                             bigPictureBitmap = BitmapFactory.decodeStream(
                                 URL(it.trim()).openConnection().getInputStream()
                             )
-                        } catch (e: Exception) {
+                        } catch (_: Exception) {
                         }
                     }
 

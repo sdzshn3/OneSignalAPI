@@ -257,8 +257,8 @@ class NewPushViewModel @Inject constructor(
 
                     } catch (e: JSONException) {
                         val id = rootObject.optString("id")
-                        val recipients = rootObject.optInt("recipients")
-                        val data = "Recipients: $recipients\nID: $id"
+                        //val recipients = rootObject.optInt("recipients")
+                        val data = "Notification ID: $id"
 
                         val params = Bundle()
                         params.putString("success", "true")
